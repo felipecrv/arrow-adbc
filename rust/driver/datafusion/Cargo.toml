@@ -31,17 +31,22 @@ keywords.workspace = true
 categories.workspace = true
 
 [dependencies]
-adbc_core.workspace = true
-arrow-array.workspace = true
-arrow-buffer.workspace = true
-arrow-schema.workspace = true
+# Arrow dependencies (for Datafusion)
+arrow-array = { version = "54.1.0", default-features = false }
+arrow-buffer = { version = "54.1.0", default-features = false }
+arrow-schema = { version = "54.1.0", default-features = false }
+
+# Datafusion
 datafusion = "45.0.0"
 datafusion-substrait = "45.0.0"
+
+adbc_core.workspace = true
 tokio = { version = "1.43", features = ["rt-multi-thread"] }
 prost = "0.13.4"
 
 [dev-dependencies]
-arrow-select.workspace = true
+# Arrow dependencies (for Datafusion)
+arrow-select = { version = "54.1.0", default-features = false }
 
 [lib]
 crate-type = ["lib", "cdylib"]

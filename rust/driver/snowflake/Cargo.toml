@@ -42,9 +42,11 @@ env = ["dep:regex"]
 dotenv = ["env", "dep:dotenvy"]
 
 [dependencies]
-adbc_core = { workspace = true, features = ["driver_manager"] }
+# Arrow dependencies
 arrow-array.workspace = true
 arrow-schema.workspace = true
+
+adbc_core = { workspace = true, features = ["driver_manager"] }
 dotenvy = { version = "0.15.7", default-features = false, optional = true }
 regex = { version = "1.11.1", default-features = false, optional = true }
 url = "2.5.4"
