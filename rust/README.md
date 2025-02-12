@@ -35,17 +35,27 @@ It currently provides:
 To run the integration tests you must:
 
 1. Install [SQLite](https://www.sqlite.org/) and have its dynamic library in path.
-1. Build the official ADBC SQLite driver by following the [documentation](../CONTRIBUTING.md).
-1. Place the resulting object file into your dynamic loader path or set
+2. Build the official ADBC SQLite driver by following the [documentation](../CONTRIBUTING.md).
+3. Place the resulting object file into your dynamic loader path or set
    `LD_LIBRARY_PATH/DYLD_LIBRARY_PATH` appropriately.
-1. Run `cargo test --all-features --workspace`
+4. Run `cargo test --all-features --workspace`
+
+To run the Snowflake integration tests you must:
+
+1. Make sure the [Go compiler](https://go.dev/doc/install) is available. This is
+   required to build the Snowflake driver (users can skip this build step if
+   they have a pre-compiled shared object file and load it dynamically in their
+   applications).
+2. Define the `ADBC_SNOWFLAKE_TESTS` to enable the integration tests.
+3. Run `cargo test --all-features --workspace`
+
 
 ## Writing Drivers
 
 To write an ADBC driver in Rust you have to:
 
 1. Create a new library crate with `crate-type = ["lib", "cdylib"]`.
-1. Implement the abstract API which consists of the traits `Driver`, `Database`, `Connection` and `Statement`.
-1. Export your driver to C with the macro `adbc_core::export_driver!`.
+2. Implement the abstract API which consists of the traits `Driver`, `Database`, `Connection` and `Statement`.
+3. Export your driver to C with the macro `adbc_core::export_driver!`.
 
 The resulting object file can then be loaded by other languages trough their own driver manager.
