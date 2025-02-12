@@ -16,7 +16,7 @@
 # under the License.
 
 [workspace]
-members = ["core", "driver/*"]
+members = ["core", "driver/datafusion", "driver/dummy", "driver/snowflake"]
 resolver = "2"
 
 [workspace.package]
